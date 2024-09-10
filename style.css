@@ -1,0 +1,61 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: url('background.jpg'); /* Substitua pelo caminho correto da imagem */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+.overlay {
+    background-color: rgba(255, 255, 255, 0.8); /* Transparência para garantir legibilidade */
+    padding: 20px;
+}
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: rgba(255, 255, 255, 0.9); /* Fundo branco com leve transparência */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+h1 {
+    text-align: center;
+    color: #333;
+}
+h2 {
+    color: #444;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+    cursor: pointer;
+}
+ul {
+    list-style-type: square;
+    margin: 0;
+    padding: 0;
+    display: none; /* Inicialmente escondido */
+}
+ul li {
+    margin: 5px 0;
+    cursor: pointer;
+}
+.pix {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.selected {
+    text-decoration: line-through;
+    color: gray;
+}
+.chosen-name {
+    font-style: italic;
+    color: green;
+    margin-left: 10px;
+}
