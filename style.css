@@ -32,6 +32,9 @@ h2 {
     cursor: pointer;
     font-weight: bold;
 }
+.active-header {
+    color: #d10404; /* Cor roxa ou a cor que preferir */
+}
 
 .casal-name{
     color: #7e0000;

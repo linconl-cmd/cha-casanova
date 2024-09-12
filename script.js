@@ -1,10 +1,18 @@
 // Defina a base URL para o backend
 const BASE_URL = 'https://api-chacasa.vercel.app'; // URL do backend em produção
 
-// Função para alternar a visibilidade das seções
-function toggleSection(id) {
+// Função para alternar a visibilidade das seções e alterar a cor do h2
+function toggleSection(id, headerId) {
     const section = document.getElementById(id);
-    section.style.display = section.style.display === 'none' ? 'block' : 'none';
+    const header = document.getElementById(headerId);
+
+    if (section.style.display === 'none' || section.style.display === '') {
+        section.style.display = 'block';
+        header.classList.add('active-header'); // Adiciona a classe para mudar a cor
+    } else {
+        section.style.display = 'none';
+        header.classList.remove('active-header'); // Remove a classe quando oculto
+    }
 }
 
 // Função para selecionar um item
