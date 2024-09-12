@@ -50,6 +50,16 @@ async function saveSelection() {
     }
 }
 
+// Função para copiar o e-mail para a área de transferência
+function copyEmail() {
+    const email = document.getElementById('email').innerText;
+    navigator.clipboard.writeText(email).then(() => {
+        alert('E-mail copiado para a área de transferência!');
+    }).catch(err => {
+        console.error('Falha ao copiar o e-mail: ', err);
+    });
+}
+
 // Função para carregar a seleção do servidor
 async function loadSelection() {
     try {

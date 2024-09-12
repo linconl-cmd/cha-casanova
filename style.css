@@ -17,7 +17,7 @@ body {
 .container {
     max-width: 800px;
     margin: 50px auto;
-    background-color: rgba(255, 255, 255, 0.9); /* Fundo branco com leve transparência */
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco com leve transparência */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -45,7 +45,7 @@ ul li {
 .pix {
     margin-top: 20px;
     padding: 10px;
-    background-color: #f1f1f1;
+    background-color: rgba(255, 255, 255, 0.5); /* Fundo branco com leve transparência */
     border: 1px solid #ccc;
     text-align: center;
 }
@@ -54,6 +54,28 @@ ul li {
     width: 10rem; /* Largura da imagem QR Code */
     height: 10rem; /* Altura da imagem QR Code */
     object-fit: contain; /* Mantém a proporção da imagem dentro do tamanho especificado */
+}
+/* Estilos para o botão de copiar */
+.copy-btn {
+    display: inline-block;
+    padding: 4px 5px;
+    background-color: #6a1b9a; /* Roxo */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 13px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.copy-btn:hover {
+    background-color: #4a0072; /* Roxo mais escuro */
+}
+
+.copy-btn:active {
+    background-color: #3e005b; /* Roxo ainda mais escuro */
 }
 
 
@@ -65,4 +87,54 @@ ul li {
     font-style: italic;
     color: green;
     margin-left: 10px;
+}
+
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px; /* Reduzido para se ajustar melhor em telas menores */
+        max-width: 90%;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 18px;
+    }
+
+    p {
+        font-size: 14px;
+    }
+
+    li {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px; /* Mais reduzido para telas pequenas */
+        max-width: 95%;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    p {
+        font-size: 12px;
+    }
+
+    li {
+        font-size: 12px;
+        padding: 6px;
+    }
 }
