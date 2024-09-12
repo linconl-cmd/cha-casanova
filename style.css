@@ -143,7 +143,13 @@ ul li {
     p {
         font-size: 17px;
     }
-
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: none;
+    }
+    
     li {
         font-size: 26px;
         padding: 6px;
