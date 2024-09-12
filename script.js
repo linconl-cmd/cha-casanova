@@ -1,19 +1,14 @@
-//Função para esconder ou mostrar as seções
-function toggleSection(sectionId) {
-    var section = document.getElementById(sectionId);
-    if (section.style.display === "none" || section.style.display === "") {
-        section.style.display = "block";
-    } else {
-        section.style.display = "none";
-    }
+// Defina a base URL para o backend
+const BASE_URL = 'https://api-chacasa.vercel.app'; // URL do backend em produção
+
+// Função para alternar a visibilidade das seções
+function toggleSection(id) {
+    const section = document.getElementById(id);
+    section.style.display = section.style.display === 'none' ? 'block' : 'none';
 }
 
-
+// Função para selecionar um item
 function selectItem(item) {
-    if (item.classList.contains('selected')) {
-        return;
-    }
-
     var person = prompt("Qual o seu nome?");
     if (person) {
         item.classList.add('selected');
@@ -27,48 +22,62 @@ function selectItem(item) {
     }
 }
 
-// Função para salvar a seleção dos itens no servidor
-function saveSelection() {
-    var items = document.querySelectorAll('ul li.selected');
-    var selection = Array.from(items).map(item => {
-        return {
-            text: item.textContent.replace(/- Escolhido por .*/, '').trim(),
-            chosenBy: item.querySelector('.chosen-name') ? item.querySelector('.chosen-name').textContent.replace('- Escolhido por ', '').trim() : ''
-        };
-    });
+// Função para salvar a seleção no backend
+async function saveSelection() {
+    const selections = Array.from(document.querySelectorAll('li.selected')).map(li => ({
+        name: li.querySelector('.chosen-name') ? li.querySelector('.chosen-name').innerText.replace('- Escolhido por ', '') : 'Desconhecido',
+        item: li.textContent.replace(li.querySelector('.chosen-name') ? li.querySelector('.chosen-name').innerText : '', '').trim()
+    }));
 
-    fetch('http://localhost:3000/save-selection', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(selection)
-    })
-    .then(response => response.json())
-    .then(data => console.log('Seleção salva com sucesso:', data))
-    .catch(error => console.error('Erro ao salvar a seleção:', error));
-}
+    // Verifique o formato dos dados antes de enviar
+    console.log('Enviando seleção:', selections);
 
-// Função para carregar a seleção dos itens do servidor
-function loadSelection() {
-    fetch('http://localhost:3000/get-selection')
-    .then(response => response.json())
-    .then(selection => {
-        selection.forEach(item => {
-            var li = Array.from(document.querySelectorAll('ul li')).find(li => li.textContent.includes(item.text));
-            if (li) {
-                li.classList.add('selected');
-                if (item.chosenBy) {
-                    var nameSpan = document.createElement('span');
-                    nameSpan.classList.add('chosen-name');
-                    nameSpan.innerText = `- Escolhido por ${item.chosenBy}`;
-                    li.appendChild(nameSpan);
-                }
-            }
+    try {
+        const response = await fetch(`${BASE_URL}/save-selection`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(selections),
         });
-    })
-    .catch(error => console.error('Erro ao carregar a seleção:', error));
+
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log('Resposta do servidor:', result);
+    } catch (error) {
+        console.error('Erro ao salvar a seleção:', error);
+    }
 }
 
-// Carregar a seleção ao carregar a página
+// Função para carregar a seleção do servidor
+async function loadSelection() {
+    try {
+        const response = await fetch(`${BASE_URL}/get-selection`);
+        const selections = await response.json();
+
+        // Limpar itens selecionados anteriores
+        document.querySelectorAll('li.selected').forEach(li => li.classList.remove('selected'));
+
+        // Adicionar os itens carregados
+        selections.forEach(selection => {
+            const items = Array.from(document.querySelectorAll('li'));
+            items.forEach(item => {
+                if (item.textContent.includes(selection.item)) {
+                    item.classList.add('selected');
+                    const nameSpan = document.createElement('span');
+                    nameSpan.classList.add('chosen-name');
+                    nameSpan.innerText = `- Escolhido por ${selection.name}`;
+                    item.appendChild(nameSpan);
+                }
+            });
+        });
+    } catch (error) {
+        console.error('Erro ao carregar a seleção:', error);
+    }
+}
+
+// Carregar seleção ao iniciar a página
 window.onload = loadSelection;
