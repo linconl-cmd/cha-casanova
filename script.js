@@ -9,16 +9,20 @@ function toggleSection(id) {
 
 // Função para selecionar um item
 function selectItem(item) {
-    var person = prompt("Qual o seu nome?");
-    if (person) {
-        item.classList.add('selected');
-        var nameSpan = document.createElement('span');
-        nameSpan.classList.add('chosen-name');
-        nameSpan.innerText = `- Escolhido por ${person}`;
-        item.appendChild(nameSpan);
-
-        // Salvar a seleção no servidor
-        saveSelection();
+    if (!item.classList.contains('selected')) {
+        const person = prompt("Qual o seu nome?");
+        if (person) {
+            item.classList.add('selected');
+            const nameSpan = document.createElement('span');
+            nameSpan.classList.add('chosen-name');
+            nameSpan.innerText = `- Escolhido por ${person}`;
+            item.appendChild(nameSpan);
+            
+            // Salvar a seleção no servidor
+            saveSelection();
+        }
+    } else {
+        console.log('Item já selecionado');
     }
 }
 
@@ -29,11 +33,10 @@ async function saveSelection() {
         item: li.textContent.replace(li.querySelector('.chosen-name') ? li.querySelector('.chosen-name').innerText : '', '').trim()
     }));
 
-    // Verifique o formato dos dados antes de enviar
-    console.log('Enviando seleção:', selections);
+    console.log('Dados a serem enviados para o backend:', selections);
 
     try {
-        const response = await fetch(`${BASE_URL}/save-selection`, {
+        await fetch(`${BASE_URL}/save-selection`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -41,12 +44,7 @@ async function saveSelection() {
             body: JSON.stringify(selections),
         });
 
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-
-        const result = await response.json();
-        console.log('Resposta do servidor:', result);
+        
     } catch (error) {
         console.error('Erro ao salvar a seleção:', error);
     }
