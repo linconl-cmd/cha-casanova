@@ -130,19 +130,22 @@ ul li {
         max-width: 88%;
     }
     h1 {
-        font-size: 25px;
+        font-size: 33px;
     }
 
     h2 {
-        font-size: 22px;
+        font-size: 27px;
+    }
+    .casal-name{
+        font-size: 20px;
     }
 
     p {
-        font-size: 14px;
+        font-size: 17px;
     }
 
     li {
-        font-size: 17px;
-        padding: 8px;
+        font-size: 25px;
+        padding: 6px;
     }
 }
