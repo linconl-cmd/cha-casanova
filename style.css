@@ -50,7 +50,7 @@ ul li {
     text-align: center;
 }
 
-img {
+.pix .qr-code {
     width: 10rem; /* Largura da imagem QR Code */
     height: 10rem; /* Altura da imagem QR Code */
     object-fit: contain; /* Mantém a proporção da imagem dentro do tamanho especificado */
