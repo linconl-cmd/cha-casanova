@@ -1,8 +1,7 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: Handlee, sans-serif;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-image: url('background.jpg'); /* Substitua pelo caminho correto da imagem */
@@ -17,20 +16,25 @@ body {
 .container {
     max-width: 800px;
     margin: 50px auto;
-    background-color: rgba(255, 255, 255, 0.8); /* Fundo branco com leve transparência */
+    background-color: rgba(245, 196, 169, 0.8); /* Fundo branco com leve transparência */
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 h1 {
     text-align: center;
-    color: #333;
+    color: #7E0000
 }
 h2 {
-    color: #444;
+    color: #333;
     border-bottom: 2px solid #ddd;
     padding-bottom: 10px;
     cursor: pointer;
+    font-weight: bold;
+}
+
+.casal-name{
+    color: #7e0000;
 }
 ul {
     list-style-type: square;
@@ -58,12 +62,13 @@ ul li {
 /* Estilos para o botão de copiar */
 .copy-btn {
     display: inline-block;
+    font-family: Handlee, sans-serif;
     padding: 4px 5px;
-    background-color: #6a1b9a; /* Roxo */
+    background-color: #7E0000; /* Roxo */
     color: white;
     border: none;
     border-radius: 5px;
-    font-size: 13px;
+    font-size: 12px;
     cursor: pointer;
     text-align: center;
     text-decoration: none;
@@ -71,11 +76,11 @@ ul li {
 }
 
 .copy-btn:hover {
-    background-color: #4a0072; /* Roxo mais escuro */
+    background-color: #5a0606; /* Roxo mais escuro */
 }
 
 .copy-btn:active {
-    background-color: #3e005b; /* Roxo ainda mais escuro */
+    background-color: #a00202; /* Roxo ainda mais escuro */
 }
 
 
@@ -85,7 +90,8 @@ ul li {
 }
 .chosen-name {
     font-style: italic;
-    color: green;
+    color:#7E0000; /* Roxo */
+    ;
     margin-left: 10px;
 }
 
@@ -93,24 +99,24 @@ ul li {
 @media (max-width: 768px) {
     .container {
         padding: 15px; /* Reduzido para se ajustar melhor em telas menores */
-        max-width: 90%;
-        text-align: center;
+        max-width: 80%;
+        
     }
 
     h1 {
-        font-size: 22px;
+        font-size: 25px;
     }
 
     h2 {
-        font-size: 18px;
+        font-size: 22px;
     }
 
     p {
-        font-size: 14px;
+        font-size: 20px;
     }
 
     li {
-        font-size: 14px;
+        font-size: 19px;
         padding: 8px;
     }
 }
@@ -118,23 +124,22 @@ ul li {
 @media (max-width: 480px) {
     .container {
         padding: 10px; /* Mais reduzido para telas pequenas */
-        max-width: 95%;
+        max-width: 88%;
     }
-
     h1 {
-        font-size: 20px;
+        font-size: 25px;
     }
 
     h2 {
-        font-size: 16px;
+        font-size: 22px;
     }
 
     p {
-        font-size: 12px;
+        font-size: 14px;
     }
 
     li {
-        font-size: 12px;
-        padding: 6px;
+        font-size: 17px;
+        padding: 8px;
     }
 }
