@@ -20,14 +20,17 @@ function selectItem(item) {
     if (!item.classList.contains('selected')) {
         const person = prompt("Qual o seu nome?");
         if (person) {
-            item.classList.add('selected');
-            const nameSpan = document.createElement('span');
-            nameSpan.classList.add('chosen-name');
-            nameSpan.innerText = `- Escolhido por ${person}`;
-            item.appendChild(nameSpan);
+            const confirmation = confirm("Tem certeza da sua escolha? Não será possível desfazer essa ação.");
+            if (confirmation) {
+                item.classList.add('selected');
+                const nameSpan = document.createElement('span');
+                nameSpan.classList.add('chosen-name');
+                nameSpan.innerText = `- Escolhido por ${person}`;
+                item.appendChild(nameSpan);
             
             // Salvar a seleção no servidor
             saveSelection();
+          }
         }
     } else {
         console.log('Item já selecionado');
