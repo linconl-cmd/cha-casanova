@@ -2,7 +2,7 @@
 # Carol e Linconl
 
 
-Realizei esse projeto para enviar essa lista para amigos e familiares para conseguirmos montar nossa casa que está pra sair
+Realizei esse projeto para enviar essa lista para amigos e familiares para conseguirmos montar nossa casa que está para sair
 
 Fiz o frontend e subi aqui no github pages mesmo e o backend que tem uma api em nodejs consumindo um banco de dados postgres
 
