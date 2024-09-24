@@ -133,6 +133,11 @@ ul li {
     margin-left: 10px;
 }
 
+.footerr{
+    
+    font-size: 11px;
+}
+
 
 @media (max-width: 768px) {
     .container {
